@@ -40,7 +40,7 @@ class PageResource extends Resource
                     ->schema([
                         Text::make('title')
                             ->columnSpanFull()
-                            ->label('')
+                            ->label(''),
                     ]),
 
                 Forms\Components\Section::make(__('Content'))
