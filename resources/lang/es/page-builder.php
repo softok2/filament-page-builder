@@ -27,5 +27,5 @@ return [
     'component' => 'Componente|Componentes',
     'edit-component' => 'Editar Componente :component',
     'more-content-here' => 'Más Contenido Aquí ...',
-    'pages_and_layouts' => 'Páginas y Diseños',
+    'pages_and_layouts' => 'Páginas & Diseños',
 ];
