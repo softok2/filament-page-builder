@@ -1,62 +1,110 @@
-# :package_description
+    # Filament tool for improve management of pages content speed and easy
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/:vendor_slug/:package_slug/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/:vendor_slug/:package_slug/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/:vendor_slug/:package_slug/fix-php-code-styling.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/:vendor_slug/:package_slug/actions?query=workflow%3A"Fix+PHP+code+styling"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/softok2/filament-page-builder.svg?style=flat-square)](https://packagist.org/packages/softok2/filament-page-builder)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/softok2/filament-page-builder/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/softok2/filament-page-builder/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/softok2/filament-page-builder/fix-php-code-styling.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/softok2/filament-page-builder/actions?query=workflow%3A"Fix+PHP+code+styling"+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/softok2/filament-page-builder.svg?style=flat-square)](https://packagist.org/packages/softok2/filament-page-builder)
 
-<!--delete-->
----
-This repo can be used to scaffold a Filament plugin. Follow these steps to get started:
 
-1. Press the "Use this template" button at the top of this repo to create a new repo with the contents of this skeleton.
-2. Run "php ./configure.php" to run a script that will replace all placeholders throughout all the files.
-3. Make something great!
----
-<!--/delete-->
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+This package comes with predefined form components that can be used to build a page:
+* Text
+* ImageUpload
+* TextBox
+* Marquee
+* Slider
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require :vendor_slug/:package_slug
+composer require softok2/filament-page-builder
 ```
 
-You can publish and run the migrations with:
+You can set up all the necessary files by running the following command:
 
 ```bash
-php artisan vendor:publish --tag=":package_slug-migrations"
-php artisan migrate
+php artisan filament-page-builder:install
 ```
 
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag=":package_slug-config"
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag=":package_slug-views"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
+### And it is ready to use!!
 
 ## Usage
 
-```php
-$variable = new VendorName\Skeleton();
-echo $variable->echoPhrase('Hello, VendorName!');
+### Its recommended to run migrations and seeders to get the default components and pages.
+
+```bash
+php artisan migrate --seed
 ```
+
+
+The packages come with a predefined page blocks and layout components in ```App//Filament//PageBuilder``` .
+Page blocks look like this:
+
+```php
+class HomeBlock extends PageBlock
+{
+    const HEADER_SECTION = 'header_section';
+
+    public static string $fileUploadDirectory = 'uploads/pages/';
+
+    public function headerSection(): Block
+    {
+        return Block::make(self::HEADER_SECTION)->label(__('Header Section'))
+            ->schema([
+                Text::make('title'),
+                ImageUpload::make('background'),
+            ])->maxItems(1);
+    }
+}
+```
+Define your own section per page declaring a method with the name  and de ```Section``` suffix. 
+
+
+Include the plugins in your admin panel:
+
+```php
+...
+   ->plugins([
+        FilamentPageBuilder::make()
+])
+```
+
+## Customization
+
+Yoy can define your own blocks and components by creating both classes and mapping them in the plugin configuration.
+
+
+For create a new block you can run the following command:
+
+```bash
+php artisan filament-page-builder-block:make HistoryBlock
+```
+
+For create a new layout component you can run the following command:
+
+```bash
+php artisan filament-page-builder-lc:make HeroComponent
+```
+
+Then you can map the new blocks and components in the plugin configuration:
+
+```php
+FilamentPageBuilder::make()
+            ->withPosts()
+            ->blocksMapper([
+                'history' => HistoryBlock::class,
+            ])
+            ->layoutsComponentsMapper([
+                'hero' => HeroComponent::class,
+            ])
+```
+
+In the example above, 'history' and 'hero' are the name of the page and component respectively.
+You can easly add them in the seeders:
+* PageSeeder.php
+* LayoutComponentSeeder.php
 
 ## Testing
 
@@ -78,7 +126,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [:author_name](https://github.com/:author_username)
+- [Franky](https://github.com/softok2)
 - [All Contributors](../../contributors)
 
 ## License

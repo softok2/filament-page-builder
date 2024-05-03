@@ -1,0 +1,24 @@
+<?php
+
+namespace {{ namespace }};
+
+use Filament\Forms\Components\Builder\Block;
+use Softok2\FilamentPageBuilder\Forms\LegacyComponents\PageBlock;
+use Softok2\FilamentPageBuilder\Forms\Components\ImageUpload;
+use Softok2\FilamentPageBuilder\Forms\Components\Text;
+
+class {{ class }} extends PageBlock
+{
+    const HEADER_SECTION = 'header_section';
+
+    public static string $fileUploadDirectory = 'uploads/pages/';
+
+    public function headerSection(): Block
+    {
+        return Block::make(self::HEADER_SECTION)->label(__('Header Section'))
+            ->schema([
+                Text::make('title'),
+                ImageUpload::make('background'),
+            ])->maxItems(1);
+    }
+}

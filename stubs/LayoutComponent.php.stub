@@ -1,0 +1,22 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use Filament\Forms\Components\Placeholder;
+use Softok2\FilamentPageBuilder\Forms\Components\ImageUpload;
+use Softok2\FilamentPageBuilder\Forms\LegacyComponents\LayoutComponent;
+
+class {{ class }} extends LayoutComponent
+{
+    public function __invoke(): array
+    {
+        return [
+            ImageUpload::make('logo')
+                ->directory('uploads/layout-components'),
+            Placeholder::make('more_content_here')
+                ->label(trans('filament-page-builder::page-builder.more-content-here')),
+        ];
+    }
+}
