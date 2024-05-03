@@ -17,9 +17,9 @@ class TextBox extends Field
     public function getChildComponents(): array
     {
         return [
-            Fieldset::make(__($this->getName(), ['locale' => '']))
-                ->hiddenLabel(fn () => ! $this->getLabel() ?? false)
-                ->label($this->getLabel() ?: null)
+            Fieldset::make($this->getName())
+                ->label(fn () => $this->getLabel())
+                ->hiddenLabel(fn () => $this->isLabelHidden())
                 ->schema([
                     Textarea::make('es')
                         ->rows($this->getRows())

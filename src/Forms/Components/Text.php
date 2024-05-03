@@ -15,9 +15,9 @@ class Text extends Field
     public function getChildComponents(): array
     {
         return [
-            Fieldset::make(__($this->getName()))
-                ->hiddenLabel(fn () => ! $this->getLabel() ?? false)
-                ->label($this->getLabel() ?: null)
+            Fieldset::make($this->getName())
+                ->label(fn () => $this->getLabel())
+                ->hiddenLabel(fn () => $this->isLabelHidden())
                 ->schema([
                     TextInput::make('es')
                         ->label('Es')

@@ -123,19 +123,11 @@ class PageResource extends Resource
             ->columns()
             ->schema([
                 Forms\Components\Group::make([
-                    Forms\Components\Fieldset::make('title')
-                        ->statePath('title')
-                        ->schema([
-                            TextInput::make('es')
-                                ->label('Es')
-                                ->required()
-                                ->maxLength(255),
-                            TextInput::make('en')->label('En')
-                                ->maxLength(255),
-                        ]),
+                    Text::make('title'),
                 ]),
                 Forms\Components\Group::make([
                     Forms\Components\Fieldset::make('keywords')
+                        ->label(trans('filament-page-builder::page-builder.keywords'))
                         ->statePath('keywords')
                         ->schema([
                             Forms\Components\TagsInput::make('es')
@@ -143,9 +135,10 @@ class PageResource extends Resource
                             Forms\Components\TagsInput::make('en')->label('En'),
                         ]),
                 ]),
-                ImageUpload::make('image')->columnSpanFull(),
+                ImageUpload::make('image')
+                    ->label('')
+                    ->columnSpanFull(),
             ]);
-
     }
 
     public static function getNavigationGroup(): ?string
