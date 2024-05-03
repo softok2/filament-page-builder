@@ -31,7 +31,7 @@ class LayoutComponent extends Model
     /**
      * @throws Throwable
      */
-    public function filamentContent(): array
+    public function resourceFormSchema(): array
     {
         $mapperFromPlugin = filament('softok2/filament-page-builder')->getLayoutsComponentsMapper();
 

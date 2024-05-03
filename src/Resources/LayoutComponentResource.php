@@ -33,7 +33,7 @@ class LayoutComponentResource extends Resource
             ->schema([
                 Forms\Components\Section::make()
                     ->statePath('content')
-                    ->schema($form->getRecord()->filamentContent())
+                    ->schema($form->getRecord()->resourceFormSchema())
                     ->columnSpanFull(),
             ]);
     }
@@ -81,5 +81,10 @@ class LayoutComponentResource extends Resource
     public static function getNavigationLabel(): string
     {
         return trans('filament-page-builder::page-builder.layouts-components');
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return trans('filament-page-builder::page-builder.pages_and_layouts');
     }
 }

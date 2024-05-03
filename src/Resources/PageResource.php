@@ -13,6 +13,7 @@ use Filament\Tables\Table;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Softok2\FilamentPageBuilder\Forms\Components\ImageUpload;
+use Softok2\FilamentPageBuilder\Forms\Components\Text;
 use Softok2\FilamentPageBuilder\Models\Page;
 use Softok2\FilamentPageBuilder\Resources\PageResource\Pages\EditPage;
 use Softok2\FilamentPageBuilder\Resources\PageResource\Pages\ListPages;
@@ -36,13 +37,10 @@ class PageResource extends Resource
                     ->compact()
                     ->columns()
                     ->collapsible()
-                    ->statePath('title')
                     ->schema([
-                        TextInput::make('es')
-                            ->label('Es')
-                            ->required(),
-                        TextInput::make('en')
-                            ->label('En'),
+                        Text::make('title')
+                            ->columnSpanFull()
+                            ->label('')
                     ]),
 
                 Forms\Components\Section::make(__('Content'))
@@ -148,5 +146,10 @@ class PageResource extends Resource
                 ImageUpload::make('image')->columnSpanFull(),
             ]);
 
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return trans('filament-page-builder::page-builder.pages_and_layouts');
     }
 }
