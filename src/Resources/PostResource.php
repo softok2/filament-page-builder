@@ -5,19 +5,19 @@ declare(strict_types=1);
 namespace Softok2\FilamentPageBuilder\Resources;
 
 use Filament\Forms;
-use Filament\Tables;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Filament\Resources\Resource;
-use Filament\Forms\Components\Split;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Split;
 use Filament\Forms\Components\TextInput;
-use Softok2\FilamentPageBuilder\Models\Post;
+use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Table;
 use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 use Softok2\FilamentPageBuilder\Form\Components\Fields\ImageUpload;
+use Softok2\FilamentPageBuilder\Models\Post;
+use Softok2\FilamentPageBuilder\Resources\PostResource\Pages\CreatePost;
 use Softok2\FilamentPageBuilder\Resources\PostResource\Pages\EditPost;
 use Softok2\FilamentPageBuilder\Resources\PostResource\Pages\ListPosts;
-use Softok2\FilamentPageBuilder\Resources\PostResource\Pages\CreatePost;
 
 class PostResource extends Resource
 {

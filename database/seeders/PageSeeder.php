@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
-use Illuminate\Support\Arr;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Arr;
 use Softok2\FilamentPageBuilder\Models\Page;
 
 class PageSeeder extends Seeder

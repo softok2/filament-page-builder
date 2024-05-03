@@ -35,10 +35,8 @@ class Slider extends Repeater
                 ]);
         }
 
-
         return $schema;
     }
-
 
     protected function setUp(): void
     {
@@ -49,7 +47,6 @@ class Slider extends Repeater
             ->collapsible()
             ->defaultItems(3);
     }
-
 
     public function isCircular(): bool
     {

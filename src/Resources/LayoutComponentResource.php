@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Softok2\FilamentPageBuilder\Resources;
 
 use Filament\Forms;
-use Filament\Tables;
 use Filament\Forms\Form;
-use Filament\Tables\Table;
 use Filament\Resources\Resource;
-use Psr\Container\NotFoundExceptionInterface;
+use Filament\Tables;
+use Filament\Tables\Table;
 use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 use Softok2\FilamentPageBuilder\Models\LayoutComponent;
 use Softok2\FilamentPageBuilder\Resources\LayoutComponentResource\Pages\EditComponentLayout;
 use Softok2\FilamentPageBuilder\Resources\LayoutComponentResource\Pages\ListLayoutComponents;

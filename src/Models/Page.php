@@ -58,7 +58,6 @@ class Page extends Model
             self::PRIVACY => PrivacyPolicyBlock::class,
         ], $mapperFromPlugin)[$this->name];
 
-
         throw_if(
             ! is_subclass_of($blockClass, PageBlock::class),
             new Exception('Block must be a subclass of PageBlock')

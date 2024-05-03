@@ -11,7 +11,7 @@ class DynamicArrayPropertyMapperDTO
     protected static int $maxDepth = 10;
 
     public function __construct(
-        array|string $data,
+        array | string $data,
         int $depth = 0
     ) {
 
@@ -22,6 +22,7 @@ class DynamicArrayPropertyMapperDTO
             if (is_array($value)) {
                 if (Arr::isAssoc($value)) {
                     $this->{$key} = $this->buildMapper($value, $depth, $key);
+
                     continue;
                 }
 
@@ -33,7 +34,7 @@ class DynamicArrayPropertyMapperDTO
     protected function buildMapper(
         mixed $value,
         int $depth
-    ): DynamicArrayPropertyMapperDTO|string|null|array {
+    ): DynamicArrayPropertyMapperDTO | string | null | array {
 
         if ($this->isValidArray($value) && $depth <= self::$maxDepth) {
             return new self($value, $depth + 1);
@@ -54,7 +55,7 @@ class DynamicArrayPropertyMapperDTO
         return count($value) === 2 && Arr::has($value, $keys);
     }
 
-    private function translate(array|string|null $value): ?string
+    private function translate(array | string | null $value): ?string
     {
         $fallback = $value['en'] ?? $value['es'] ?? $value;
 

@@ -8,7 +8,8 @@ use Spatie\Translatable\HasTranslations;
 
 class NavigationItem extends Model
 {
-    use HasFactory, HasTranslations;
+    use HasFactory;
+    use HasTranslations;
 
     protected $fillable = ['name', 'path'];
 

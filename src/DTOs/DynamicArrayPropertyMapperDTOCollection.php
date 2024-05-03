@@ -11,7 +11,7 @@ class DynamicArrayPropertyMapperDTOCollection extends Collection
     public function fromDTO(): Collection
     {
         return collect($this->items)->map(function (
-            array|string $item
+            array | string $item
         ) {
             return is_string($item) ? $item : new DynamicArrayPropertyMapperDTO($item);
         });
