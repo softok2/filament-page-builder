@@ -4,21 +4,21 @@ declare(strict_types=1);
 
 namespace Softok2\FilamentPageBuilder;
 
-use Filament\Support\Assets\Js;
-use Filament\Support\Assets\Css;
-use Filament\Support\Assets\Asset;
-use Illuminate\Filesystem\Filesystem;
-use Spatie\LaravelPackageTools\Package;
-use Filament\Support\Facades\FilamentIcon;
-use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Assets\AlpineComponent;
+use Filament\Support\Assets\Asset;
+use Filament\Support\Assets\Css;
+use Filament\Support\Assets\Js;
+use Filament\Support\Facades\FilamentAsset;
+use Filament\Support\Facades\FilamentIcon;
+use Illuminate\Filesystem\Filesystem;
 use Livewire\Features\SupportTesting\Testable;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Spatie\LaravelPackageTools\Commands\InstallCommand;
-use Softok2\FilamentPageBuilder\Testing\TestsFilamentPageBuilder;
-use Softok2\FilamentPageBuilder\Commands\GeneratePageBlockCommand;
 use Softok2\FilamentPageBuilder\Commands\FilamentPageBuilderCommand;
 use Softok2\FilamentPageBuilder\Commands\GenerateLayoutComponentCommand;
+use Softok2\FilamentPageBuilder\Commands\GeneratePageBlockCommand;
+use Softok2\FilamentPageBuilder\Testing\TestsFilamentPageBuilder;
+use Spatie\LaravelPackageTools\Commands\InstallCommand;
+use Spatie\LaravelPackageTools\Package;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class FilamentPageBuilderServiceProvider extends PackageServiceProvider
 {
@@ -64,8 +64,8 @@ class FilamentPageBuilderServiceProvider extends PackageServiceProvider
 
         if (file_exists($package->basePath('/../database/seeders'))) {
             $this->publishes([
-                __DIR__.'/../database/seeders/PageSeeder.php' => database_path('seeders/PageSeeder.php'),
-                __DIR__.'/../database/seeders/LayoutComponentSeeder.php' => database_path('seeders/LayoutComponentSeeder.php'),
+                __DIR__ . '/../database/seeders/PageSeeder.php' => database_path('seeders/PageSeeder.php'),
+                __DIR__ . '/../database/seeders/LayoutComponentSeeder.php' => database_path('seeders/LayoutComponentSeeder.php'),
             ], 'page-builder-seeds');
         }
 
@@ -96,7 +96,7 @@ class FilamentPageBuilderServiceProvider extends PackageServiceProvider
 
         // Handle Stubs
         if (app()->runningInConsole()) {
-            foreach (app(Filesystem::class)->files(__DIR__.'/../stubs/') as $file) {
+            foreach (app(Filesystem::class)->files(__DIR__ . '/../stubs/') as $file) {
                 $this->publishes([
                     $file->getRealPath() => base_path("stubs/filament-page-builder/{$file->getFilename()}"),
                 ], 'filament-page-builder-stubs');
@@ -121,11 +121,11 @@ class FilamentPageBuilderServiceProvider extends PackageServiceProvider
             // AlpineComponent::make('filament-page-builder', __DIR__ . '/../resources/dist/components/filament-page-builder.js'),
             Css::make(
                 'filament-page-builder-styles',
-                __DIR__.'/../resources/dist/filament-page-builder.css'
+                __DIR__ . '/../resources/dist/filament-page-builder.css'
             ),
             Js::make(
                 'filament-page-builder-scripts',
-                __DIR__.'/../resources/dist/filament-page-builder.js'
+                __DIR__ . '/../resources/dist/filament-page-builder.js'
             ),
         ];
     }

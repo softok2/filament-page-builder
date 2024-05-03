@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Softok2\FilamentPageBuilder;
 
-use Filament\Panel;
 use Filament\Contracts\Plugin;
+use Filament\Panel;
+use Softok2\FilamentPageBuilder\Resources\LayoutComponentResource;
 use Softok2\FilamentPageBuilder\Resources\PageResource;
 use Softok2\FilamentPageBuilder\Resources\PostResource;
-use Softok2\FilamentPageBuilder\Resources\LayoutComponentResource;
 
 class FilamentPageBuilder implements Plugin
 {

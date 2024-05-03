@@ -23,5 +23,4 @@ class EditPage extends EditRecord
             ->title(__('Page Updated'))
             ->body(__('The page has been updated successfully'));
     }
-
 }

@@ -5,15 +5,15 @@ declare(strict_types=1);
 namespace Softok2\FilamentPageBuilder\Resources;
 
 use Filament\Forms;
-use Filament\Tables;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Filament\Resources\Resource;
 use Filament\Forms\Components\TextInput;
-use Softok2\FilamentPageBuilder\Models\Page;
-use Psr\Container\NotFoundExceptionInterface;
+use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Table;
 use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 use Softok2\FilamentPageBuilder\Forms\Components\ImageUpload;
+use Softok2\FilamentPageBuilder\Models\Page;
 use Softok2\FilamentPageBuilder\Resources\PageResource\Pages\EditPage;
 use Softok2\FilamentPageBuilder\Resources\PageResource\Pages\ListPages;
 

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Softok2\FilamentPageBuilder\Resources\LayoutComponentResource\Pages;
 
-use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 use Softok2\FilamentPageBuilder\Resources\LayoutComponentResource;
 

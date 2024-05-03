@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Softok2\FilamentPageBuilder\Resources;
 
-use App\Filament\Resources\CustomServiceResource\Pages;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -56,7 +55,7 @@ class CustomServiceResource extends Resource
                         ->label(__('Title', ['locale' => '']))
                         ->searchable()
                         ->sortable()
-                        ->description(fn(
+                        ->description(fn (
                             CustomService $record
                         ): ?string => app()->getLocale() === 'es' ? $record->description_es : $record->description_en),
                 ]),

@@ -9,13 +9,12 @@ use Softok2\FilamentPageBuilder\Resources\PostResource;
 
 class CreatePost extends CreateRecord
 {
-
     protected static string $resource = PostResource::class;
 
     protected function getHeaderActions(): array
     {
         return [
-//            Actions\LocaleSwitcher::make(),
+            //            Actions\LocaleSwitcher::make(),
         ];
     }
 

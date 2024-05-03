@@ -14,7 +14,7 @@ class GeneratePageBlockCommand extends GeneratorCommand
 
     protected function getStub(): string
     {
-        return __DIR__.'/../../stubs/PageBlock.php.stub';
+        return __DIR__ . '/../../stubs/PageBlock.php.stub';
     }
 
     protected function getDefaultNamespace($rootNamespace): string

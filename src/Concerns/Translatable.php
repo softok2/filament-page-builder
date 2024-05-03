@@ -15,7 +15,7 @@ trait Translatable
     {
         throw_if(
             ! property_exists($this, 'translatable'),
-            'Property translatable does not exist in '.__CLASS__.' class'
+            'Property translatable does not exist in ' . __CLASS__ . ' class'
         );
 
         if (in_array($name, $this->translatable)) {
@@ -25,7 +25,7 @@ trait Translatable
         return get_parent_class(__CLASS__) ? parent::__get($name) : null;
     }
 
-    private function translate(array|string|null $value): ?string
+    private function translate(array | string | null $value): ?string
     {
         $fallback = $value['en'] ?? $value['es'] ?? $value;
 

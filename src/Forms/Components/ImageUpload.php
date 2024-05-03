@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Softok2\FilamentPageBuilder\Forms\Components;
 
 use Filament\Forms\Components\Field;
-use Filament\Forms\Components\Section;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Section;
 
 class ImageUpload extends Field
 {
