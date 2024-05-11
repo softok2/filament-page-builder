@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Softok2\FilamentPageBuilder\Resources;
 
 use Filament\Forms;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
