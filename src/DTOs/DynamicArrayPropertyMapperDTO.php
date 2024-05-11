@@ -5,9 +5,13 @@ declare(strict_types=1);
 namespace Softok2\FilamentPageBuilder\DTOs;
 
 use Illuminate\Support\Arr;
+use Softok2\FilamentPageBuilder\Concerns\InteractsWithDTOTranslation;
 
 class DynamicArrayPropertyMapperDTO
 {
+    use InteractsWithDTOTranslation;
+
+
     protected static int $maxDepth = 10;
 
     public function __construct(
@@ -21,7 +25,7 @@ class DynamicArrayPropertyMapperDTO
 
             if (is_array($value)) {
                 if (Arr::isAssoc($value)) {
-                    $this->{$key} = $this->buildMapper($value, $depth, $key);
+                    $this->{$key} = $this->buildMapper($value, $depth);
 
                     continue;
                 }
@@ -48,17 +52,4 @@ class DynamicArrayPropertyMapperDTO
         return is_array($arr) && ! $this->isTranslationsArray($arr);
     }
 
-    private function isTranslationsArray($value): bool
-    {
-        $keys = ['es', 'en'];
-
-        return count($value) === 2 && Arr::has($value, $keys);
-    }
-
-    private function translate(array | string | null $value): ?string
-    {
-        $fallback = $value['en'] ?? $value['es'] ?? $value;
-
-        return $value[app()->getLocale()] ?? $fallback;
-    }
 }
