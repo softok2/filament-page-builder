@@ -32,6 +32,7 @@ class LayoutComponentResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Section::make()
+                    ->label(trans('filament-page-builder::page-builder.content'))
                     ->statePath('content')
                     ->schema($form->getRecord()->resourceFormSchema())
                     ->columnSpanFull(),

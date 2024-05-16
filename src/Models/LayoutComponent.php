@@ -25,7 +25,7 @@ class LayoutComponent extends Model
 
     protected function getContentAsDynamicDtoAttribute(
     ): DynamicArrayPropertyMapperDTO {
-        return new DynamicArrayPropertyMapperDTO($this->content[0] ?? []);
+        return new DynamicArrayPropertyMapperDTO($this->content ?? []);
     }
 
     /**

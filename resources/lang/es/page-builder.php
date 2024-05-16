@@ -8,7 +8,7 @@ return [
     'subtitle' => 'Subtítulo',
     'content' => 'Contenido',
     'image' => 'Imagen',
-    'alt_text' => 'Texto alternativo',
+    'alt-text' => 'Texto alternativo',
     'page' => 'Página|Páginas',
     'header-section' => 'Sección de Encabezado',
     'marquee' => 'Marquesina',

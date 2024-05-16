@@ -19,7 +19,7 @@ class ImageUpload extends Field
     public function getChildComponents(): array
     {
         $fileUpload = FileUpload::make('path')
-            ->label(__('Image'))
+            ->label(trans('filament-page-builder::page-builder.image'))
             ->nullable(false)
             ->columnSpanFull()
             ->disk('public')
@@ -28,6 +28,7 @@ class ImageUpload extends Field
             ->image()
             ->maxSize(10 * 1024)
             ->nullable()
+            ->downloadable()
             ->columnSpanFull();
 
         if ($this->avatarMode) {
@@ -43,7 +44,7 @@ class ImageUpload extends Field
                 ->schema([
                     $fileUpload,
                     Text::make('alt_text')
-                        ->translateLabel(),
+                        ->label(trans('filament-page-builder::page-builder.alt-text')),
                 ]),
         ];
     }
