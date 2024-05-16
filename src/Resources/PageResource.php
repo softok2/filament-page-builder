@@ -122,7 +122,8 @@ class PageResource extends Resource
             ->columns()
             ->schema([
                 Forms\Components\Group::make([
-                    Text::make('title'),
+                    Text::make('title')
+                    ->label(trans('filament-page-builder::page-builder.title'))
                 ]),
                 Forms\Components\Group::make([
                     Forms\Components\Fieldset::make('keywords')
