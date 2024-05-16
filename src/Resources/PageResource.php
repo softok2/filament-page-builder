@@ -123,7 +123,7 @@ class PageResource extends Resource
             ->schema([
                 Forms\Components\Group::make([
                     Text::make('title')
-                    ->label(trans('filament-page-builder::page-builder.title'))
+                        ->label(trans('filament-page-builder::page-builder.title')),
                 ]),
                 Forms\Components\Group::make([
                     Forms\Components\Fieldset::make('keywords')
