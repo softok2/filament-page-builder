@@ -14,6 +14,10 @@ class TextBox extends Field
 
     protected int $rows = 4;
 
+    protected bool $isEsInputRequired = false;
+
+    protected bool $isEnInputRequired = false;
+
     public function getChildComponents(): array
     {
         return [
@@ -24,10 +28,11 @@ class TextBox extends Field
                     Textarea::make('es')
                         ->rows($this->getRows())
                         ->label('Es')
-                        ->required(),
+                        ->required($this->isEsInputRequired),
                     Textarea::make('en')
                         ->rows($this->getRows())
-                        ->label('En'),
+                        ->label('En')
+                        ->required($this->isEnInputRequired),
                 ])->columns(),
         ];
     }
@@ -40,6 +45,20 @@ class TextBox extends Field
     public function rows(int $rows): TextBox
     {
         $this->rows = $rows;
+
+        return $this;
+    }
+
+    public function esInputRequired(bool $isEsInputRequired = true): TextBox
+    {
+        $this->isEsInputRequired = $isEsInputRequired;
+
+        return $this;
+    }
+
+    public function enInputRequired(bool $isEnInputRequired = true): TextBox
+    {
+        $this->isEnInputRequired = $isEnInputRequired;
 
         return $this;
     }

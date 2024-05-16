@@ -12,6 +12,10 @@ class Text extends Field
 {
     protected string $view = 'filament-forms::components.group';
 
+    protected bool $isEsInputRequired = false;
+
+    protected bool $isEnInputRequired = false;
+
     public function getChildComponents(): array
     {
         return [
@@ -21,10 +25,25 @@ class Text extends Field
                 ->schema([
                     TextInput::make('es')
                         ->label('Es')
-                        ->required(),
+                        ->required($this->isEsInputRequired),
                     TextInput::make('en')
-                        ->label('En'),
+                        ->label('En')
+                        ->required($this->isEnInputRequired),
                 ])->columns(),
         ];
+    }
+
+    public function esInputRequired(bool $isEsInputRequired = true): Text
+    {
+        $this->isEsInputRequired = $isEsInputRequired;
+
+        return $this;
+    }
+
+    public function enInputRequired(bool $isEnInputRequired = true): Text
+    {
+        $this->isEnInputRequired = $isEnInputRequired;
+
+        return $this;
     }
 }
