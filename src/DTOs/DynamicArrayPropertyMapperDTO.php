@@ -11,7 +11,6 @@ class DynamicArrayPropertyMapperDTO
 {
     use InteractsWithDTOTranslation;
 
-
     protected static int $maxDepth = 10;
 
     public function __construct(
@@ -51,5 +50,4 @@ class DynamicArrayPropertyMapperDTO
     {
         return is_array($arr) && ! $this->isTranslationsArray($arr);
     }
-
 }
