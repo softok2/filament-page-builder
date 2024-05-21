@@ -15,7 +15,11 @@ trait InteractsWithDTOTranslation
 
     private function translate(array | string | null $value): ?string
     {
-        $fallback = $value['en'] ?? $value['es'] ?? $value;
+        if (! is_array($value)) {
+            return $value;
+        }
+
+        $fallback = $value['en'] ?? $value['es'] ?? null;
 
         return $value[app()->getLocale()] ?? $fallback;
     }
