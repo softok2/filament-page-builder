@@ -25,14 +25,16 @@ trait Translatable
         return get_parent_class(__CLASS__) ? parent::__get($name) : null;
     }
 
-    private function translate(array | string | null $value): ?string
+    private function translate(array | string | null $name): ?string
     {
-        if (! is_array($value)) {
-            return $value;
+        $value = $this[$name];
+
+        if (is_array($value)) {
+            $fallback = $value['es'] ?? $value['en'] ?? '';
+
+            return $value[app()->getLocale()] ?? $fallback;
         }
 
-        $fallback = $value['en'] ?? $value['es'] ?? null;
-
-        return $value[app()->getLocale()] ?? $fallback;
+        return $value;
     }
 }

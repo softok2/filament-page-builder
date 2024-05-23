@@ -12,6 +12,7 @@ use App\Filament\PageBuilder\Blocks\PrivacyPolicyBlock;
 use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Softok2\FilamentPageBuilder\Concerns\InteractsWithPageContent;
+use Softok2\FilamentPageBuilder\DTOs\DynamicArrayPropertyMapperDTO;
 use Softok2\FilamentPageBuilder\Forms\LegacyComponents\PageBlock;
 use Throwable;
 
@@ -64,5 +65,13 @@ class Page extends Model
         );
 
         return new $blockClass;
+    }
+
+    /**
+     * @return DynamicArrayPropertyMapperDTO
+     */
+    public function getMetaAsDtoAttribute(): DynamicArrayPropertyMapperDTO
+    {
+        return new DynamicArrayPropertyMapperDTO($this->meta ?? []);
     }
 }

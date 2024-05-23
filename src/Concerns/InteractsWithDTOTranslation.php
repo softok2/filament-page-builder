@@ -13,7 +13,7 @@ trait InteractsWithDTOTranslation
         return count($value) === 2 && Arr::has($value, $keys);
     }
 
-    private function translate(array | string | null $value): ?string
+    private function translate(array | string | null $value): string|array|null
     {
         if (! is_array($value)) {
             return $value;
