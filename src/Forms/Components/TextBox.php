@@ -29,7 +29,7 @@ class TextBox extends CustomField
                     Textarea::make('en')
                         ->rows($this->getRows())
                         ->label('En')
-                        ->hidden($this->isEnInputVisible())
+                        ->visible($this->isEnInputVisible())
                         ->required($this->isEnInputRequired()),
                 ])->columns(),
         ];
