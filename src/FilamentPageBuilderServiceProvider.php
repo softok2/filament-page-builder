@@ -74,9 +74,7 @@ class FilamentPageBuilderServiceProvider extends PackageServiceProvider
         }
     }
 
-    public function packageRegistered(): void
-    {
-    }
+    public function packageRegistered(): void {}
 
     public function packageBooted(): void
     {
@@ -104,7 +102,7 @@ class FilamentPageBuilderServiceProvider extends PackageServiceProvider
         }
 
         // Testing
-        Testable::mixin(new TestsFilamentPageBuilder());
+        Testable::mixin(new TestsFilamentPageBuilder);
     }
 
     protected function getAssetPackageName(): ?string

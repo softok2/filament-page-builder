@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Softok2\FilamentPageBuilder\Forms\Components;
 
-use Filament\Forms\Components\Field;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Textarea;
 
