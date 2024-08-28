@@ -67,9 +67,6 @@ class Page extends Model
         return new $blockClass;
     }
 
-    /**
-     * @return DynamicArrayPropertyMapperDTO
-     */
     public function getMetaAsDtoAttribute(): DynamicArrayPropertyMapperDTO
     {
         return new DynamicArrayPropertyMapperDTO($this->meta ?? []);
