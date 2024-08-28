@@ -8,15 +8,11 @@ use Filament\Forms\Components\Field;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Textarea;
 
-class TextBox extends Field
+class TextBox extends CustomField
 {
     protected string $view = 'filament-forms::components.group';
 
     protected int $rows = 4;
-
-    protected bool $isEsInputRequired = false;
-
-    protected bool $isEnInputRequired = false;
 
     public function getChildComponents(): array
     {
@@ -28,11 +24,13 @@ class TextBox extends Field
                     Textarea::make('es')
                         ->rows($this->getRows())
                         ->label('Es')
-                        ->required($this->isEsInputRequired),
+                        ->visible($this->isEsInputVisible())
+                        ->required($this->isEsInputRequired()),
                     Textarea::make('en')
                         ->rows($this->getRows())
                         ->label('En')
-                        ->required($this->isEnInputRequired),
+                        ->hidden($this->isEnInputVisible())
+                        ->required($this->isEnInputRequired()),
                 ])->columns(),
         ];
     }
@@ -45,20 +43,6 @@ class TextBox extends Field
     public function rows(int $rows): TextBox
     {
         $this->rows = $rows;
-
-        return $this;
-    }
-
-    public function esInputRequired(bool $isEsInputRequired = true): TextBox
-    {
-        $this->isEsInputRequired = $isEsInputRequired;
-
-        return $this;
-    }
-
-    public function enInputRequired(bool $isEnInputRequired = true): TextBox
-    {
-        $this->isEnInputRequired = $isEnInputRequired;
 
         return $this;
     }

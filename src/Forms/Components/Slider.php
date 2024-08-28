@@ -7,7 +7,7 @@ namespace Softok2\FilamentPageBuilder\Forms\Components;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Repeater;
 
-class Slider extends Repeater
+class Slider extends CustomRepeater
 {
     protected string $view = 'filament-forms::components.repeater.index';
 
@@ -30,8 +30,16 @@ class Slider extends Repeater
         if ($this->isFull()) {
             $schema[] =
                 Group::make([
-                    Text::make('title'),
-                    TextBox::make('description'),
+                    Text::make('title')
+                        ->esInputVisible($this->isEsInputVisible())
+                        ->esInputRequired($this->isEsInputRequired())
+                        ->enInputVisible($this->isEnInputVisible())
+                        ->enInputRequired($this->isEnInputRequired()),
+                    TextBox::make('description')
+                        ->esInputVisible($this->isEsInputVisible())
+                        ->esInputRequired($this->isEsInputRequired())
+                        ->enInputVisible($this->isEnInputVisible())
+                        ->enInputRequired($this->isEnInputRequired()),
                 ]);
         }
 

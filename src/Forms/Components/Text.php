@@ -8,13 +8,9 @@ use Filament\Forms\Components\Field;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\TextInput;
 
-class Text extends Field
+class Text extends CustomField
 {
     protected string $view = 'filament-forms::components.group';
-
-    protected bool $isEsInputRequired = false;
-
-    protected bool $isEnInputRequired = false;
 
     public function getChildComponents(): array
     {
@@ -25,25 +21,13 @@ class Text extends Field
                 ->schema([
                     TextInput::make('es')
                         ->label('Es')
-                        ->required($this->isEsInputRequired),
+                        ->visible($this->isEsInputVisible())
+                        ->required($this->isEsInputRequired()),
                     TextInput::make('en')
                         ->label('En')
-                        ->required($this->isEnInputRequired),
+                        ->visible($this->isEnInputVisible())
+                        ->required($this->isEnInputRequired()),
                 ])->columns(),
         ];
-    }
-
-    public function esInputRequired(bool $isEsInputRequired = true): Text
-    {
-        $this->isEsInputRequired = $isEsInputRequired;
-
-        return $this;
-    }
-
-    public function enInputRequired(bool $isEnInputRequired = true): Text
-    {
-        $this->isEnInputRequired = $isEnInputRequired;
-
-        return $this;
     }
 }
