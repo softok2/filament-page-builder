@@ -20,7 +20,7 @@ class FilamentPageBuilder implements Plugin
 
     public static function make(): static
     {
-        return new static();
+        return new static;
     }
 
     public function getId(): string

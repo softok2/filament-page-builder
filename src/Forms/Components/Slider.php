@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Softok2\FilamentPageBuilder\Forms\Components;
 
 use Filament\Forms\Components\Group;
-use Filament\Forms\Components\Repeater;
 
 class Slider extends CustomRepeater
 {
