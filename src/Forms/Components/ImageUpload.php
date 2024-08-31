@@ -16,6 +16,10 @@ class ImageUpload extends Field
 
     protected bool $avatarMode = false;
 
+    protected bool $esAltTextRequired = false;
+
+    protected bool $enAltTextRequired = false;
+
     public function getChildComponents(): array
     {
         $fileUpload = FileUpload::make('path')
@@ -44,6 +48,8 @@ class ImageUpload extends Field
                 ->schema([
                     $fileUpload,
                     Text::make('alt_text')
+                        ->esInputRequired($this->esAltTextRequired)
+                        ->enInputRequired($this->enAltTextRequired)
                         ->label(trans('filament-page-builder::page-builder.alt-text')),
                 ]),
         ];
@@ -59,6 +65,20 @@ class ImageUpload extends Field
     public function avatarMode(bool $condition): ImageUpload
     {
         $this->avatarMode = $condition;
+
+        return $this;
+    }
+
+    public function esAltTextRequired(bool $condition = true): ImageUpload
+    {
+        $this->esAltTextRequired = $condition;
+
+        return $this;
+    }
+
+    public function enAltTextRequired(bool $condition = true): ImageUpload
+    {
+        $this->enAltTextRequired = $condition;
 
         return $this;
     }
