@@ -13,6 +13,7 @@ use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Softok2\FilamentPageBuilder\Forms\Components\ImageUpload;
 use Softok2\FilamentPageBuilder\Forms\Components\Text;
+use Softok2\FilamentPageBuilder\Forms\Components\TextBox;
 use Softok2\FilamentPageBuilder\Models\Page;
 use Softok2\FilamentPageBuilder\Resources\PageResource\Pages\EditPage;
 use Softok2\FilamentPageBuilder\Resources\PageResource\Pages\ListPages;
@@ -134,6 +135,10 @@ class PageResource extends Resource
                                 ->label('Es'),
                             Forms\Components\TagsInput::make('en')->label('En'),
                         ]),
+                ]),
+                Forms\Components\Group::make([
+                    TextBox::make('description')
+                        ->label(trans('filament-page-builder::page-builder.description')),
                 ]),
                 ImageUpload::make('image')
                     ->label('')
