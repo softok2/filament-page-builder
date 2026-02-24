@@ -8,14 +8,18 @@ trait InteractsWithDTOTranslation
 {
     private function isTranslationsArray($value): bool
     {
+        if (!is_array($value)) {
+            return false;
+        }
+
         $keys = ['es', 'en'];
 
         return count($value) === 2 && Arr::has($value, $keys);
     }
 
-    private function translate(array | string | null $value): string | array | null
+    private function translate(array|string|null $value): string|array|null
     {
-        if (! is_array($value)) {
+        if (!is_array($value)) {
             return $value;
         }
 
